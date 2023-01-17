@@ -4,7 +4,9 @@ import { render } from "react-dom";
 // example on promises: 1:24 and 8:45
 // promises help solve callback hell: 5:04
 
-const App = props => {
+//https://codesandbox.io/s/react-functional-component-forked-m69gtb?file=/src/index.js
+
+const Qv2 = props => {
   const [inputValue, setInputValue] = useState("");
   const text = useRef("");
 
@@ -106,5 +108,5 @@ const App = props => {
 }
 
 
-
-render(<App />, document.getElementById("root"));
+export default Qv2;
+// render(<App />, document.getElementById("root"));
