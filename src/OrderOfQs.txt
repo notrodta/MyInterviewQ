@@ -33,8 +33,20 @@ Summary: Promises.all, map function
 _____________________________________________________________________________
 
 Talk about custom hooks, what do you use custom hooks for?
+- Offers reusability
+- Enhances rerender speed since custom  hook does not need to be rendered again
+
 How does authentication and authorization work?
+- Access Token (JWT) needs to be verified for authentication
+- User role/claims for authorization, what the user is allow to access within the app
+
+When does rerender happen on a react component?
+- When state changes
+
+What are the differences between states and props
+- Both are data that holds info. State is managed within the component and props is passed to the component
+- States are mutatable and props are immutable
+
 What store management tools are you familiar with?
 How do you decide when to use context vs redux?
 - Redux for global state management if we work on a larger, complex project. If the project is smaller, or we focus on encapsulating modules, it is worth using the Context API
-
