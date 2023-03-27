@@ -1,0 +1,40 @@
+- When you first load the page, I want the top of the page to say Hello {candidate Name}
+by calling this API: (https://api.github.com/users/Bob)
+- How do you manage error handling here? What if the API is returning an error (ex: status code 500)
+- Lets say this API takes a while to retrieve data. Before retrieving the data, I want to header
+to display "...IsLoading" text instead.
+
+Summary: Async methods, Promises, UseEffect, Fetch, Then, Catch, Finally
+
+_____________________________________________________________________________
+
+- Create an input box with a button next to it.
+- user can type into input box, and when you click on the button,
+it will display the header from Hello <name> to Hello <new user input>.
+
+Summary: useRef, useState
+
+_____________________________________________________________________________
+
+- Create A button that calls this API: https://randomuser.me/api
+- Then when user click on the button: replace Hello <name> with the newly generated name from that API
+
+Summary: Async method, promises, fetch, updating
+_____________________________________________________________________________
+
+- Create another button that calls these 2 API:
+https://randomuser.me/api
+https://api.github.com/users/Bob
+
+- Print the 2 names under the button
+
+Summary: Promises.all, map function
+
+_____________________________________________________________________________
+
+Talk about custom hooks, what do you use custom hooks for?
+How does authentication and authorization work?
+What store management tools are you familiar with?
+How do you decide when to use context vs redux?
+- Redux for global state management if we work on a larger, complex project. If the project is smaller, or we focus on encapsulating modules, it is worth using the Context API
+

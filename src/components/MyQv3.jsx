@@ -10,9 +10,9 @@ const Qv2 = props => {
   const [inputValue, setInputValue] = useState("");
   const text = useRef("");
 
-  const [randomText, setRandomText] = useState()
+//   const [randomText, setRandomText] = useState()
 
-  const [result, setResult] = useState([]);
+  const [userList, setUserList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleTextChange = (e) => {
@@ -22,6 +22,15 @@ const Qv2 = props => {
   const handleTextClick = () => {
     setInputValue(text.current);
   }
+
+  // Same as function below, but dont need async function??
+//   const handleRandomNameClick = () => {
+//     // multiple way of using async method
+
+//     fetch("https://randomuser.me/api")
+//     .then((response) => response.json())
+//     .then((data) => setInputValue(data.results[0].name.first));
+//   }
 
   const handleRandomNameClick = async() => {
     // multiple way of using async method
@@ -33,42 +42,25 @@ const Qv2 = props => {
     try {
       const response = await fetch("https://randomuser.me/api");
       const data = await response.json();
-      setRandomText(data.results[0].name.first)
+      setInputValue(data.results[0].name.first)
     } catch (error) {
       console.error(error);
     }
   }
 
-  const handleSubmit = () => {
-    setIsLoading(true);
-    Promise.all([p1(), p2()]).then((values) => {
-      console.log(values);
-      setResult(values)
-    }).catch((error) => console.error(error))
-    .finally(() => {setIsLoading(false);})
+  //https://dmitripavlutin.com/javascript-fetch-async-await/#:~:text=fetch()%20starts%20a%20request,with%20promises%20with%20syntactic%20sugar.
+  //5. Parallel fetch requests
+  const handleSubmit = async() => {
+    const t1 = fetch("https://randomuser.me/api")
+    const t2 = fetch("https://api.github.com/users/Bob")
+
+    const [user1Response, user2Response] = await Promise.all([t1, t2]);
+    const user1 = await user1Response.json();
+    const user2 = await user2Response.json();
+    const result = [user1.results[0].name.first, user2.login];
+    setUserList(result);
   }
 
-  const p1 = () => {
-    const promise = new Promise((resolve, reject) => {
-      if (inputValue.length % 2 === 0) {
-        resolve({ id: 1, msg: "p1 success"});
-      } else {
-        reject("p1 failed")
-      }
-    });
-    return promise;
-  }
-
-  const p2 = () => {
-    const promise = new Promise((resolve, reject) => {
-      if (!isNaN(randomText)) {
-        resolve({id: 2, msg: "p2 success"})
-      } else {
-        reject("p2 failed")
-      }
-    });
-    return promise;
-  }
 
   useEffect(() => {
     // async method
@@ -84,7 +76,7 @@ const Qv2 = props => {
 
     fetch("https://api.github.com/users/Bob")
     .then((response) => response.json())
-    .then((data) => setRandomText(data.login))
+    .then((data) => setInputValue(data.login))
     .catch((error) => console.error(error))
     .finally( () => {setIsLoading(false)});
   },[]);
@@ -95,19 +87,18 @@ const Qv2 = props => {
         {isLoading ? (
           <h2> isLoading... </h2>
         ) : (
-          <h2> HELLO {randomText} </h2>
+          <h2> HELLO {inputValue} </h2>
         )}
       </div>
       <input onChange={handleTextChange} />
       <button type="button" onClick={handleTextClick}> Click Me! </button>
-      <div>{inputValue}</div>
       <br />
       <button onClick={handleRandomNameClick}> Generate Random Name </button>
       <br />
       <button onClick={handleSubmit}> Submit </button>
       <div> 
-        {result.map((data) => (
-          <div key={data.id}> {data.msg} </div>
+        {userList.map((data, i) => (
+          <div key={i}> {data} </div>
         ))} 
       </div>
     </div>
