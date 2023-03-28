@@ -1,4 +1,12 @@
-- When you first load the page, I want the top of the page to say Hello {candidate Name}
+- Create an input box with a button next to it.
+- user can type into input box, and when you click on the button,
+it will display a header with your text on it.
+
+Summary: useRef, useState
+
+_____________________________________________________________________________
+
+- When you first load the page, I want the top of the page to say {candidate Name}
 by calling this API: (https://api.github.com/users/Bob)
 - How do you manage error handling here? What if the API is returning an error (ex: status code 500)
 - Lets say this API takes a while to retrieve data. Before retrieving the data, I want to header
@@ -8,16 +16,9 @@ Summary: Async methods, Promises, UseEffect, Fetch, Then, Catch, Finally
 
 _____________________________________________________________________________
 
-- Create an input box with a button next to it.
-- user can type into input box, and when you click on the button,
-it will display the header from Hello <name> to Hello <new user input>.
-
-Summary: useRef, useState
-
-_____________________________________________________________________________
 
 - Create A button that calls this API: https://randomuser.me/api
-- Then when user click on the button: replace Hello <name> with the newly generated name from that API
+- Then when user click on the button: replace  <name> with the newly generated name from that API
 
 Summary: Async method, promises, fetch, updating
 _____________________________________________________________________________
