@@ -13,7 +13,7 @@ const Qv2 = props => {
 //   const [randomText, setRandomText] = useState()
 
   const [userList, setUserList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleTextChange = (e) => {
     text.current = e.target.value;
@@ -54,18 +54,23 @@ const Qv2 = props => {
     const t1 = fetch("https://randomuser.me/api")
     const t2 = fetch("https://api.github.com/users/Bob")
 
-    const [user1Response, user2Response] = await Promise.all([t1, t2]);
-    const user1 = await user1Response.json();
-    const user2 = await user2Response.json();
-    const result = [user1.results[0].name.first, user2.login];
-    setUserList(result);
+    try {
+      const [user1Response, user2Response] = await Promise.all([t1, t2]);
+      const user1 = await user1Response.json();
+      const user2 = await user2Response.json();
+      const result = [user1.results[0].name.first, user2.login];
+      setUserList(result);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
 
   useEffect(() => {
     // async method
     // can also put all the fetch into a fetch Hook
-    setIsLoading(true);
 
     // Example of a failed api call and console error
     // fetch("https://www.randomnumberapi.com/api/v1.0/random")
@@ -78,17 +83,12 @@ const Qv2 = props => {
     .then((response) => response.json())
     .then((data) => setInputValue(data.login))
     .catch((error) => console.error(error))
-    .finally( () => {setIsLoading(false)});
   },[]);
 
   return (
     <div>
       <div>
-        {isLoading ? (
-          <h2> isLoading... </h2>
-        ) : (
-          <h2> HELLO {inputValue} </h2>
-        )}
+      <h2> {inputValue} </h2>
       </div>
       <input onChange={handleTextChange} />
       <button type="button" onClick={handleTextClick}> Click Me! </button>
@@ -97,9 +97,15 @@ const Qv2 = props => {
       <br />
       <button onClick={handleSubmit}> Submit </button>
       <div> 
-        {userList.map((data, i) => (
-          <div key={i}> {data} </div>
-        ))} 
+        {isLoading ? (
+          <h2> No Data... </h2>
+        ) : (
+          <>
+            {userList.map((data, i) => (
+              <div key={i}> {data} </div>
+            ))}
+          </> 
+        )}
       </div>
     </div>
   )

@@ -9,10 +9,8 @@ _____________________________________________________________________________
 - When you first load the page, I want the top of the page to say {candidate Name}
 by calling this API: (https://api.github.com/users/Bob)
 - How do you manage error handling here? What if the API is returning an error (ex: status code 500)
-- Lets say this API takes a while to retrieve data. Before retrieving the data, I want to header
-to display "...IsLoading" text instead.
 
-Summary: Async methods, Promises, UseEffect, Fetch, Then, Catch, Finally
+Summary: Async methods, Promises, UseEffect, Fetch, Then, Catch
 
 _____________________________________________________________________________
 
@@ -27,9 +25,10 @@ _____________________________________________________________________________
 https://randomuser.me/api
 https://api.github.com/users/Bob
 
-- Print the 2 names under the button
+- Before you press the button, it should show text: "No Data under the button"
+- After pressing the button, Print the 2 names under the button
 
-Summary: Promises.all, map function
+Summary: Promises.all, map function, conditional rendering, try, catch, finally
 
 _____________________________________________________________________________
 
