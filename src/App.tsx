@@ -4,14 +4,17 @@ import './App.css';
 import Dashboard from './components/Dashboard';
 import Qv2 from './components/MyQv2';
 import Qv3 from './components/MyQv3';
+import Easyv1 from './components/Easy';
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      {/* <Dashboard />
       <hr />
       <h1> Qv2 </h1>
       <Qv2 />
+      <hr /> */}
+      <Easyv1 />
       <hr />
       <h1> Qv3 </h1>
       <Qv3 />
