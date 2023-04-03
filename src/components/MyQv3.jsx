@@ -6,9 +6,10 @@ import { render } from "react-dom";
 
 //https://codesandbox.io/s/react-functional-component-forked-m69gtb?file=/src/index.js
 
-const Qv2 = props => {
+const Qv3 = props => {
   const [inputValue, setInputValue] = useState("");
   const text = useRef("");
+  const text2 = useRef("");
 
 //   const [randomText, setRandomText] = useState()
 
@@ -23,6 +24,10 @@ const Qv2 = props => {
     setInputValue(text.current);
   }
 
+  const handleGetNameFromAPITextChange = (e) => {
+    text2.current = e.target.value;
+  }
+
   // Same as function below, but dont need async function??
 //   const handleRandomNameClick = () => {
 //     // multiple way of using async method
@@ -32,7 +37,7 @@ const Qv2 = props => {
 //     .then((data) => setInputValue(data.results[0].name.first));
 //   }
 
-  const handleRandomNameClick = async() => {
+  const handleNameFromAPIClick = async() => {
     // multiple way of using async method
 
     // fetch("https://randomuser.me/api")
@@ -40,9 +45,9 @@ const Qv2 = props => {
     // .then((data) => setRandomText(data.results[0].name.first));
 
     try {
-      const response = await fetch("https://randomuser.me/api");
+      const response = await fetch(`https://api.github.com/users/${text2.current}`);
       const data = await response.json();
-      setInputValue(data.results[0].name.first)
+      setInputValue(data.login)
     } catch (error) {
       console.error(error);
     }
@@ -79,9 +84,9 @@ const Qv2 = props => {
     // .catch((error) => console.error("error!: " , error))
     // .finally( () => {setIsLoading(false)});
 
-    fetch("https://api.github.com/users/Bob")
+    fetch("https://randomuser.me/api")
     .then((response) => response.json())
-    .then((data) => setInputValue(data.login))
+    .then((data) => setInputValue(data.results[0].name.first))
     .catch((error) => console.error(error))
   },[]);
 
@@ -93,9 +98,10 @@ const Qv2 = props => {
       <input onChange={handleTextChange} />
       <button type="button" onClick={handleTextClick}> Click Me! </button>
       <br />
-      <button onClick={handleRandomNameClick}> Generate Random Name </button>
+      <input onChange={handleGetNameFromAPITextChange} />
+      <button onClick={handleNameFromAPIClick}> Get Name from API </button>
       <br />
-      <button onClick={handleSubmit}> Submit </button>
+      <button onClick={handleSubmit}> Get names from 2 APIs </button>
       <div> 
         {isLoading ? (
           <h2> No Data... </h2>
@@ -113,5 +119,5 @@ const Qv2 = props => {
 }
 
 
-export default Qv2;
+export default Qv3;
 // render(<App />, document.getElementById("root"));

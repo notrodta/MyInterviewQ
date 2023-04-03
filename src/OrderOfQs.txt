@@ -6,16 +6,17 @@ Summary: useRef, useState
 
 _____________________________________________________________________________
 
-- When you first load the page, I want the top of the page to say {candidate Name}
-by calling this API: (https://api.github.com/users/Bob)
+- When you first load the page, I want the top of the page to sow a random name
+by calling this API: (https://randomuser.me/api)
 - How do you manage error handling here? What if the API is returning an error (ex: status code 500)
 
 Summary: Async methods, Promises, UseEffect, Fetch, Then, Catch
 
 _____________________________________________________________________________
 
-
-- Create A button that calls this API: https://randomuser.me/api
+- Create another input box
+- Create A button that calls this API with the text from the new input box: 
+    -https://api.github.com/users/${text2.current}
 - Then when user click on the button: replace  <name> with the newly generated name from that API
 
 Summary: Async method, promises, fetch, updating
