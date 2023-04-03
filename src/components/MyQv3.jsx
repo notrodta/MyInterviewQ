@@ -24,14 +24,14 @@ const Qv3 = props => {
     setInputValue(text.current);
   }
 
-  // Same as function below, but dont need async function??
-//   const handleRandomNameClick = () => {
-//     // multiple way of using async method
+  // Same as function below, but dont need async function
+  // const handleNameFromAPIClick = () => {
+  //   // multiple way of using async method
 
-//     fetch("https://randomuser.me/api")
-//     .then((response) => response.json())
-//     .then((data) => setInputValue(data.results[0].name.first));
-//   }
+  //   fetch("https://randomuser.me/api")
+  //   .then((response) => response.json())
+  //   .then((data) => setInputValue(data.results[0].name.first));
+  // }
 
   const handleNameFromAPIClick = async() => {
     // multiple way of using async method
