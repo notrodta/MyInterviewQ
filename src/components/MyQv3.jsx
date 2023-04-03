@@ -24,10 +24,6 @@ const Qv3 = props => {
     setInputValue(text.current);
   }
 
-  const handleGetNameFromAPITextChange = (e) => {
-    text2.current = e.target.value;
-  }
-
   // Same as function below, but dont need async function??
 //   const handleRandomNameClick = () => {
 //     // multiple way of using async method
@@ -43,9 +39,9 @@ const Qv3 = props => {
     // fetch("https://randomuser.me/api")
     // .then((response) => response.json())
     // .then((data) => setRandomText(data.results[0].name.first));
-
+    console.log(text2.current.value);
     try {
-      const response = await fetch(`https://api.github.com/users/${text2.current}`);
+      const response = await fetch(`https://api.github.com/users/${text2.current.value}`);
       const data = await response.json();
       setInputValue(data.login)
     } catch (error) {
@@ -98,7 +94,8 @@ const Qv3 = props => {
       <input onChange={handleTextChange} />
       <button type="button" onClick={handleTextClick}> Click Me! </button>
       <br />
-      <input onChange={handleGetNameFromAPITextChange} />
+      {/* <input onChange={handleGetNameFromAPITextChange} /> */}
+      <input type="text" ref={text2} />
       <button onClick={handleNameFromAPIClick}> Get Name from API </button>
       <br />
       <button onClick={handleSubmit}> Get names from 2 APIs </button>
