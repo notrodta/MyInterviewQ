@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/12766250/228091950-6008b7e1-cbf7-48e9-9e85-4367e1d76c52.png)
+![image](https://user-images.githubusercontent.com/12766250/229636737-b4b14369-d4cf-4fb9-8fa7-3474f426e156.png)
 
 
 https://codesandbox.io/s/react-new?file=/src/App.js
