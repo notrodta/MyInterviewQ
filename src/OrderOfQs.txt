@@ -18,7 +18,7 @@ _____________________________________________________________________________
 - Create another input box
 - Create A button that calls this API with the text from the new input box: 
     -https://api.github.com/users/${text2.current}
-
+        (david)
     - Replace the path segment after users with the value the user typed into the input box
 
 - Then when user click on the button: replace  <name> at top of the page with the newly generated name from that API
@@ -28,7 +28,7 @@ _____________________________________________________________________________
 
 - Create another button that calls these 2 API:
 https://randomuser.me/api
-https://api.github.com/users/Bob
+https://api.github.com/users/mike
 
 - Before you press the button, it should show text: "No Data under the button"
 - After pressing the button, Print the 2 names under the button
