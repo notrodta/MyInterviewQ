@@ -3,6 +3,7 @@
 it will display a header with your text on it.
 
 Summary: useRef, useState
+useRef is a reac thook that lets you reference a value that's not needed for rendering
 
 _____________________________________________________________________________
 
@@ -17,7 +18,10 @@ _____________________________________________________________________________
 - Create another input box
 - Create A button that calls this API with the text from the new input box: 
     -https://api.github.com/users/${text2.current}
-- Then when user click on the button: replace  <name> with the newly generated name from that API
+
+    - Replace the path segment after users with the value the user typed into the input box
+
+- Then when user click on the button: replace  <name> at top of the page with the newly generated name from that API
 
 Summary: Async method, promises, fetch, updating
 _____________________________________________________________________________
@@ -51,3 +55,13 @@ What are the differences between states and props
 What store management tools are you familiar with?
 How do you decide when to use context vs redux?
 - Redux for global state management if we work on a larger, complex project. If the project is smaller, or we focus on encapsulating modules, it is worth using the Context API
+
+State Management
+
+React offers built-in state management with useState and useReducer Hooks (for functional components) and this.state and setState (for class components). For more complex applications, you might use external state management libraries like:
+
+Redux: A predictable state container with a global store, actions, and reducers.
+Context API (with or without useReducer): A built-in way to share state across components without prop drilling.
+Recoil: A state management library from Facebook that focuses on atomicity and simplicity.
+**Zustand
+
